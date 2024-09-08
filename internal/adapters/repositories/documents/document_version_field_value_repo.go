@@ -3,11 +3,11 @@ package repositories
 import (
 	"context"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
-	ports "github.com/billowdev/exclusive-go-hexa/internal/core/ports/documents"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/filters"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/pagination"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
+	ports "github.com/billowdev/go-fiber-e-commerce/internal/core/ports/documents"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/filters"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/pagination"
 	"gorm.io/gorm"
 )
 
@@ -31,7 +31,7 @@ func (d *DocumentVersionFieldValueImpl) CreateDocumentVersionFieldValue(ctx cont
 // DeleteDocumentVersionFieldValue implements ports.IDocumentVersionFieldValueRepository.
 func (d *DocumentVersionFieldValueImpl) DeleteDocumentVersionFieldValue(ctx context.Context, id uint) error {
 	tx := database.HelperExtractTx(ctx, d.db)
-	if err := tx.WithContext(ctx).Where("id=?",id).Delete(&models.DocumentVersionFieldValue{}).Error; err != nil {
+	if err := tx.WithContext(ctx).Where("id=?", id).Delete(&models.DocumentVersionFieldValue{}).Error; err != nil {
 		return err
 	}
 	return nil

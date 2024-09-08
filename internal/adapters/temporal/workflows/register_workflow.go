@@ -3,8 +3,8 @@ package workflows
 import (
 	"time"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/activities"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/dto"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/activities"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/dto"
 	"go.temporal.io/sdk/workflow"
 )
 

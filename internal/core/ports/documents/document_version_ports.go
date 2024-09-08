@@ -3,9 +3,9 @@ package ports
 import (
 	"context"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/pagination"
-	"github.com/billowdev/exclusive-go-hexa/pkg/utils"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/pagination"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/utils"
 )
 
 type IDocumentVersionRepository interface {

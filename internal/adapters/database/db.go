@@ -3,9 +3,9 @@ package database
 import (
 	"fmt"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/seeders"
-	"github.com/billowdev/exclusive-go-hexa/pkg/configs"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/seeders"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

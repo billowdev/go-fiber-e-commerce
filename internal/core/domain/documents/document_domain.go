@@ -3,7 +3,7 @@ package domain
 import (
 	"time"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
 )
 
 type DocumentDomain struct {

@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/dto"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/dto"
 )
 
 // func RegisterDataActivity(ctx context.Context, data dto.RegistrationData) (*pagination.Pagination[[]models.SystemField], error) {

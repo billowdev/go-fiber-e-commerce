@@ -3,11 +3,11 @@ package repositories
 import (
 	"context"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
-	ports "github.com/billowdev/exclusive-go-hexa/internal/core/ports/documents"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/filters"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/pagination"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
+	ports "github.com/billowdev/go-fiber-e-commerce/internal/core/ports/documents"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/filters"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/pagination"
 	"gorm.io/gorm"
 )
 

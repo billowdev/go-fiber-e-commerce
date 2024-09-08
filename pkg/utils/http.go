@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/billowdev/exclusive-go-hexa/pkg/configs"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"github.com/gofiber/fiber/v2"
 )
 

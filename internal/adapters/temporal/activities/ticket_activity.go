@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/dto"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/dto"
 )
 
 // func ProcessRequestActivity(ctx context.Context, requestData string) (string, error) {
