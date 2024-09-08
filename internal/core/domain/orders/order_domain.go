@@ -3,7 +3,7 @@ package domain
 import (
 	"time"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database/models"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
 )
 
 type OrderDomain struct {
@@ -32,14 +32,14 @@ func ToOrderDomain(data *models.Order) OrderDomain {
 	}
 }
 
-func ToOrderModel(data OrderDomain)	*models.Order {
+func ToOrderModel(data OrderDomain) *models.Order {
 	return &models.Order{
-        ID:                 data.ID,
-        OrderType:          data.OrderType,
-        CreatedAt:          data.CreatedAt,
-        UpdatedAt:          data.UpdatedAt,
-        PortOfLoading:      data.PortOfLoading,
-        PortOfDestination:  data.PortOfDestination,
-        DescriptionOfGoods: data.DescriptionOfGoods,
-    }
+		ID:                 data.ID,
+		OrderType:          data.OrderType,
+		CreatedAt:          data.CreatedAt,
+		UpdatedAt:          data.UpdatedAt,
+		PortOfLoading:      data.PortOfLoading,
+		PortOfDestination:  data.PortOfDestination,
+		DescriptionOfGoods: data.DescriptionOfGoods,
+	}
 }

@@ -5,11 +5,11 @@ import (
 	"strconv"
 	"time"
 
-	domain "github.com/billowdev/exclusive-go-hexa/internal/core/domain/orders"
-	ports "github.com/billowdev/exclusive-go-hexa/internal/core/ports/orders"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/filters"
-	"github.com/billowdev/exclusive-go-hexa/pkg/helpers/pagination"
-	"github.com/billowdev/exclusive-go-hexa/pkg/utils"
+	domain "github.com/billowdev/go-fiber-e-commerce/internal/core/domain/orders"
+	ports "github.com/billowdev/go-fiber-e-commerce/internal/core/ports/orders"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/filters"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/helpers/pagination"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/utils"
 	"github.com/gofiber/fiber/v2"
 )
 

@@ -8,14 +8,14 @@ import (
 
 	// graphqlAdapter "gqlhanon/internal/adapters/gql"
 	// graphqlHandler "github.com/99designs/gqlgen/graphql/handler"
-	// repositories "github.com/billowdev/exclusive-go-hexa/internal/adapters/repositories/system_fields"
-	// services "github.com/billowdev/exclusive-go-hexa/internal/core/services/system_fields"
+	// repositories "github.com/billowdev/go-fiber-e-commerce/internal/adapters/repositories/system_fields"
+	// services "github.com/billowdev/go-fiber-e-commerce/internal/core/services/system_fields"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/app"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/database"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/dto"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/workflows"
-	"github.com/billowdev/exclusive-go-hexa/pkg/configs"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/app"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/dto"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/workflows"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"go.temporal.io/sdk/client"
@@ -76,7 +76,6 @@ func main() {
 		workflowOptions := client.StartWorkflowOptions{
 			ID:        "regis_" + request.IDCard + "_" + uuid.New().String(),
 			TaskQueue: "REGISTER_TASK_QUEUE",
-			
 		}
 
 		ctx := context.Background()

@@ -4,9 +4,9 @@ import (
 	"log"
 	"log/slog"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/activities"
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/workflows"
-	"github.com/billowdev/exclusive-go-hexa/pkg/configs"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/activities"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/workflows"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"go.temporal.io/sdk/client"
 	temporalLog "go.temporal.io/sdk/log"
 	"go.temporal.io/sdk/worker"

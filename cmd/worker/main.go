@@ -5,8 +5,8 @@ import (
 	"log"
 	"log/slog"
 
-	"github.com/billowdev/exclusive-go-hexa/internal/adapters/temporal/worker"
-	"github.com/billowdev/exclusive-go-hexa/pkg/configs"
+	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/temporal/worker"
+	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"go.temporal.io/sdk/client"
 	temporalLog "go.temporal.io/sdk/log"
 	"gorm.io/driver/postgres"
