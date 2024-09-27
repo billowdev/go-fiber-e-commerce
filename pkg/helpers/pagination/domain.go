@@ -5,6 +5,16 @@ import (
 	"strings"
 )
 
+type PaginationBatchProcessingResponse[T any] struct {
+	Links      PaginationLinks `json:"links"`
+	Total      int64           `json:"total"`
+	Page       int             `json:"page"`
+	PageSize   int             `json:"page_size"`
+	TotalPages int             `json:"total_pages"`
+	Rows       []T               `json:"rows"`
+}
+
+
 // CommonTimeFilters contains common time-based filters such as date ranges and timestamps.
 type CommonTimeFilters struct {
 	DateField     string `json:"date_field"`
