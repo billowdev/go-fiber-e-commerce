@@ -25,10 +25,10 @@ WORKDIR /usr/bin
 # Copy the built Golang application from the builder stage
 COPY --from=builder /go/src/app/bin /go/bin
 
-COPY .env /usr/bin
+# COPY ../.env /usr/bin
 
 ENV TZ=Asia/Bangkok 
 
-EXPOSE 8080
-ENTRYPOINT /go/bin/web-app --port 8080
+EXPOSE 8081
+ENTRYPOINT /go/bin/web-app --port 8081
 

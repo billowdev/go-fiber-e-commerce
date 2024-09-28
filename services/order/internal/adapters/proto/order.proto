@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package order;
+
+// The order service definition.
+service OrderService {
+  // Create a new order
+  rpc CreateOrder(OrderRequest) returns (OrderResponse);
+}
+
+// The request message containing the order details.
+message OrderRequest {
+  string product_id = 1;
+  int32 quantity = 2;
+}
+
+// The response message containing the order confirmation.
+message OrderResponse {
+  string order_id = 1;
+  string status = 2;
+}

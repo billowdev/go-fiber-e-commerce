@@ -1,10 +1,6 @@
 package database
 
 import (
-	"fmt"
-
-	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
-	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/seeders"
 	"github.com/billowdev/go-fiber-e-commerce/pkg/configs"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -12,19 +8,8 @@ import (
 )
 
 func NewDatabase() (*gorm.DB, error) {
-	if configs.DB_SCHEMA == "" {
-		configs.DB_SCHEMA = "public"
-	}
 
-	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=%v search_path=%v",
-		configs.DB_HOST,
-		configs.DB_USERNAME,
-		configs.DB_PASSWORD,
-		configs.DB_NAME,
-		configs.DB_PORT,
-		configs.DB_SSL_MODE,
-		configs.DB_SCHEMA,
-	)
+	dsn := configs.DB_URL
 	loggerDBLevel := logger.Silent
 	if configs.APP_DEBUG_MODE {
 		loggerDBLevel = logger.Info
@@ -47,119 +32,13 @@ func NewDatabase() (*gorm.DB, error) {
 			return nil, err
 		}
 	}
+
 	if configs.DB_RUN_SEEDER {
+		// Reset new seed for testing purposes
+		if err := resetSeeder(db); err != nil {
+			return nil, err
+		}
 		RunSeeds(db)
 	}
 	return db, nil
-}
-
-func RunSeeds(db *gorm.DB) {
-	_ = seeders.SEED_ORDER
-	seeders.SeedOrder(db)
-	seeders.SeedSystemField(db)
-	seeders.SeedGroupField(db)
-	seeders.SeedConfigSystemMasterFileField(db)
-	seeders.SeedMasterFile(db)
-	seeders.SeedLogMasterFile(db)
-	seeders.SeedDocument(db)
-	seeders.SeedDocumentTemplate(db)
-	seeders.SeedDocumentTemplateField(db)
-	seeders.SeedDocumentVersion(db)
-	seeders.SeedDocumentVersionFieldValue(db)
-	seeders.SeedLogDocumentVersionFieldValue(db)
-}
-
-func resetSeeder(db *gorm.DB) error {
-	if err := helperDeleteInfo(db, models.TNConfigSystemMasterFileField); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNLogMasterFile); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNLogDocumentVersionFieldValue); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNMasterFile); err != nil {
-		return err
-	}
-	if err := helperDeleteInfo(db, models.TNDocumentVersionFieldValue); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNDocumentVersion); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNDocumentTemplateField); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNDocumentTemplate); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNDocument); err != nil {
-		return err
-	}
-	if err := helperDeleteInfo(db, models.TNOrder); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNSystemField); err != nil {
-		return err
-	}
-
-	if err := helperDeleteInfo(db, models.TNSystemGroupField); err != nil {
-		return err
-	}
-	return nil
-}
-func helperDeleteInfo(db *gorm.DB, table string) error {
-	err := db.Exec(fmt.Sprintf("DELETE FROM %s", table)).Error
-	if err != nil {
-		return err
-	}
-	err = db.Exec(fmt.Sprintf("SELECT setval('%s_id_seq', 1, false)", table)).Error
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func RunMigrations(db *gorm.DB) error {
-	err := db.Transaction(func(tx *gorm.DB) error {
-		err := db.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";").Error
-		if err != nil {
-			return err
-		}
-
-		err = tx.AutoMigrate(
-			// TODO START USER
-			&models.Order{},
-			&models.Document{},
-			&models.SystemField{},
-			&models.SystemGroupField{},
-			&models.MasterFile{},
-			&models.LogMasterFile{},
-			&models.ConfigSystemMasterFileField{},
-			&models.DocumentTemplate{},
-			&models.DocumentVersion{},
-			&models.DocumentTemplateField{},
-			&models.DocumentVersionFieldValue{},
-			&models.LogDocumentVersionFieldValue{},
-		)
-		if err != nil {
-			return err
-		}
-		err = resetSeeder(db)
-		if err != nil {
-			return err
-		}
-		return err
-	})
-
-	return err
 }
