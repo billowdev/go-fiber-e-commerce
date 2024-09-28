@@ -2,7 +2,6 @@ package utils
 
 import (
 	"encoding/base64"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -12,7 +11,6 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/billowdev/go-fiber-e-commerce/internal/adapters/database/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
@@ -300,33 +298,6 @@ func ParseDateParam(dateStr string) time.Time {
 	}
 
 	return parsedTime
-}
-
-func MarshalJSONB(data models.JSONB) ([]byte, error) {
-	return json.Marshal(data)
-}
-
-// func UnmarshalJSON(data []byte, target interface{}) error {
-// 	return json.Unmarshal(data, target)
-// }
-
-func UnmarshalJSON(data interface{}, target interface{}) error {
-	var jsonData []byte
-	var err error
-
-	// Check if data is already a []byte
-	if bytesData, ok := data.([]byte); ok {
-		jsonData = bytesData
-	} else {
-		// If data is not a []byte, marshal it to []byte
-		jsonData, err = json.Marshal(data)
-		if err != nil {
-			return err
-		}
-	}
-
-	// Unmarshal the JSON data into the target interface{}
-	return json.Unmarshal(jsonData, target)
 }
 
 // MapQueryParamsToMap maps query parameters to a map[string]interface{}

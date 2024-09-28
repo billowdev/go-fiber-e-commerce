@@ -15,8 +15,7 @@ var (
 
 	VERSION string
 
-	DB_DRY_RUN       bool
-	DB_NAME          string
+	DB_URL           string
 	DB_USERNAME      string
 	DB_PASSWORD      string
 	DB_HOST          string
@@ -47,18 +46,7 @@ func init() {
 	APP_NAME = viper.GetString("APP_NAME")
 	APP_ENV = viper.GetString("APP_ENV")
 
-	DB_DRY_RUN = false
-
-	DB_NAME = viper.GetString("DB_NAME")
-	DB_USERNAME = viper.GetString("DB_USERNAME")
-	DB_PASSWORD = viper.GetString("DB_PASSWORD")
-	DB_HOST = viper.GetString("DB_HOST")
-	DB_PORT = viper.GetString("DB_PORT")
-	DB_SSL_MODE = viper.GetString("DB_SSL_MODE")
-	if DB_SSL_MODE == "" {
-		DB_SSL_MODE = "default"
-	}
-	DB_SCHEMA = viper.GetString("DB_SCHEMA")
+	DB_URL = viper.GetString("DB_URL")
 
 	DB_RUN_MIGRATION, err = strconv.ParseBool(viper.GetString("DB_RUN_MIGRATION"))
 	if err != nil {
