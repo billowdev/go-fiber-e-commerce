@@ -6,14 +6,14 @@ APP_PORT="801"
 ACCESS_TOKEN_EXP=1440
 REFRESH_TOKEN_EXP=43200
 
-DB_HOST="localhost"
-DB_NAME="document_test"
-DB_USERNAME="postgres"
-DB_PASSWORD="test1234!"
-DB_PORT="5432"
-DB_SSL_MODE="disable"
+TZ=Asia/Bangkok
+DB_URL=postgres://postgres:test1234!@localhost:5432/order_service?sslmode=disable&search_path=public
 DB_RUN_MIGRATION=true
 DB_RUN_SEEDER=false
-DB_SCHEMA="public"
+
+ELASTICSEARCH_PASSWORD=elsasticsearch_test
+
+MONGO_ROOT_USERNAME=your_root_username
+MONGO_ROOT_PASSWORD=your_secure_password
 
 TEMPORAL_CLIENT_URL=127.0.0.1:7233
